@@ -1,0 +1,41 @@
+span{
+  margin: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    background-color: rgb(102, 220, 220);
+    border-color: aquamarine;
+    border-width: 5px;
+  }
+  p{
+    width: 1200px;   
+  }
+  button{
+    color: black;
+    background-color: yellow;
+    border-radius: 2px;
+  }
+  .book{
+    display: flex;
+    flex-direction: column;
+  }
+.loader{
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    border: 16px solid #f3f3f3; /* light grey */
+    border-top: 16px solid #3498db; /* blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  

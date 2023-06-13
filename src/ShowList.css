@@ -1,0 +1,38 @@
+h1 {
+    text-align: center;
+    margin: 15px;
+    color:bisque;
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+}
+p{
+    text-align: center;
+    animation: fadeIn 2s ;
+}
+li{
+    display: flex;
+    flex-basis: 33.3%;
+    justify-content: baseline;
+    align-items:center;
+    flex-direction: column;
+    margin: 5px;;
+    background-color: cornsilk ;
+    padding-top: 15px;
+    width: 280px;
+    height: 400px;
+    border-color:silver;
+    border-width: 5px;
+}
+ul{
+    display: flex;
+    flex:1fr 1fr 1fr;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.button{
+    width: 210px;
+    height: 35px;
+}
