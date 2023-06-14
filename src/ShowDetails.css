@@ -1,15 +1,24 @@
-span{
-  margin: 15px;
+.summary-body{
+    margin: 15px;
     display: flex;
+    padding: 10px;
     flex-direction: row;
-    justify-content:space-between;
+    justify-content:center;
     align-items: center;
     background-color: rgb(102, 220, 220);
-    border-color: aquamarine;
-    border-width: 5px;
+  }
+  .summary{
+    width: 1000px;
+    height: 400px;
+    display: flex;
+    justify-content: center;  
   }
   p{
-    width: 1200px;   
+    margin: 20px;
+  }
+  b{
+    display: block;
+    text-align: center;
   }
   button{
     color: black;
@@ -34,8 +43,10 @@ span{
 
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+@media (min-width:0px) and (max-width:580px) {
+  img{
+    width:57px;
   }
+  
+}
   

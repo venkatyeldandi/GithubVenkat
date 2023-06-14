@@ -27,13 +27,16 @@ function ShowDetails(props) {
   return (
     <div >
       <h1>{show.name}</h1>
-      <span>
+      <div className='summary-body'>
         <div className='book'>
-        <img src={show.image?.medium} alt={show.name} />
-        <button>Book Tickets</button>
+          <img src={show.image?.medium} alt={show.name} />
+          <button>Book Tickets</button>
         </div>
-        <p><b>ABOUT MOVIE</b><br></br>{show.summary}</p>
-      </span>
+        <div className='summay' >
+          <b>ABOUT MOVIE</b><br></br>
+          <p>{show.summary}</p>
+        </div>
+      </div>
     </div>
   );
 }

@@ -20,7 +20,6 @@ function ShowList() {
   return (
     <div>
       <h1>TV Shows</h1>
-      <p>Hello!Choose your movie collection</p>
       <ul>
         {shows.map(show => (
           <div key={show.show.id} className='show-align'>

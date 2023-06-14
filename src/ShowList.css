@@ -7,12 +7,12 @@ h1 {
     flex-direction: column;
 }
 p{
-    text-align: center;
-    animation: fadeIn 2s ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 li{
     display: flex;
-    flex-basis: 33.3%;
     justify-content: baseline;
     align-items:center;
     flex-direction: column;
@@ -26,13 +26,32 @@ li{
 }
 ul{
     display: flex;
-    flex:1fr 1fr 1fr;
+    flex-basis: 30%;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    padding-left: 0px;
 }
+
 .button{
     width: 210px;
     height: 35px;
 }
+@media (max-width: 580px)and (min-width:0px){
+    img {
+      width: 50%;
+      font-size: 7px;
+    }
+    .button{
+        width: 90px;
+        height: 35px;
+    }
+    Link{
+        font-size: 2px;
+    }
+    li{
+        width: 180px;
+        height: 230px;
+    }
+  }
