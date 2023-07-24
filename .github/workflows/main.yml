@@ -1,0 +1,27 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  FIREBASE_TOKEN: ${{ secrets.-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCucBcTnUlOIn7z\nFFWMmCdik2Ye/qf1JiaTOeLFiYhGLc2EUOtLoJvE5bj15xygDjD7HbCPSfLdAWvj\n8083BR1wLtDY6KlVLgoe3V9Qu4maMBEJnT6ysN+3c4cQ7inLHBdaV/QVj7PrJoLO\nj+FxWa076zQv5x2zjWr7FCGpz4xzMSV6L6VesPjnCgP3boPw8m9WtHuOhm/Q5NZ2\nhtIgdeSa0G76xxbxOivoBYFycPnIgI4YO0pAu0+pyselGOoRgioT4jbNHavYeeM7\nw4z8aiSedtjBk/mch7ZO890AVktpfGaSbP+5/+Wsf2NBL2BKE2Q8DFMaw37Vd1Dv\nGtcIPQMpAgMBAAECggEADC1DMSF0S+3kyIVxfN9ktXEGapC6iwaLIBElA0bY4lRB\ncdR/vl9jbEzgetrzoLko4mi1yeTevR6DqG2USKoU3l9IQTIJmwp8FqA7rnwu7Hph\nQBdv2GO4NDtOcQg9FuJ6v1nfLi+iPr6pGDALS+E3knSWZ6clp8JuFsGWoX7dZi+J\nCqJWJ+ibcFXIuqcH86sr3vmD6TyFNj136Kdx6eYFL+42M9rEKncz6X0P7AixhCes\ny6BfUPKtCDAFWJImZAfmKwdFQHOqtF/fI1hp6IEHTs8qiy0GSe4BCqVBLLx2QAMd\n86GgE1UQUFDQO+lpElFm0M2W/kJSGZ5q5hRlNNIgoQKBgQDrSMGq3HCVTkTGU9Ap\nZpf95Mda9iUMebyg18c7gG/IfRm9BlWCGkb+WvKVIqs51e8oYvl2oycunOQ5NRa3\nz7UE4H/2iuYjhkDfcFja+kRCh+FIh893eu0FG4+R7P7xXXskpR9I2UrqOEUaGVK2\n2QDgtA6vkgJKWJrEvg60wDZbYQKBgQC9y998mp7Tjr3WNi99CMTi/T8iBaYdN72b\nxW/6REjkA51vzVEhuLDqr0zxPpgM6XiakHZlK/+qyouxabwKljm4ZtyGLfNlJj4b\nNTH0ND9sp+TmGEJRRMdB1+QjkeHViILxGJNc/3ZEL1fvAlH24ar9yZ7fJQxdP9h0\naOB4hznEyQKBgAierMG2u8UsjeZ6MZkishTSKd+SPv87AoceAKWUagP9WVEMh1tx\n3QH6kQKXt5Ax30YqghsvlQLnKpFR+ZgYWvhnxShiJFZO19eXxRmYq6GIWt+OYjJt\nZXuXa+YbuadcFmPcTM4db9ou35E6NkaOorKYxiT2g3D32Au3LtC+bf9hAoGATQ6o\n/f4I3fvmN0JopWsaBM6tAzMn7lTjNotCm2l97pVJJktF1VsW+TGTG58+PH/N53Mf\nnpPuiXkSnkU/g0zawnOAtTmSyE5uiL1gOrW7ynGgDYtr4XL7M1Bj380q03dJMnm3\n2todOjG+kdtvS7zzn3ZsekygaHuzdg/ekxDT84ECgYBU4sq6qXprdwAu/Zh1cj0c\nDvHlpmtk/EfEzT3hRbjvmnQErtdCkjccybOCwl6PpusNh6rZZibDINm/sEKufThU\nQpWoXixt/s1b5h00iDlD7ZfY1URzz7McuP5Z2LG//CqKxGQPqpFFNTdJAJ0Tai2P\nOof/wyfSrFrY7F6t0O6Bjw==\n-----END PRIVATE KEY-----\n }}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14.x'
+    - name: Install dependencies
+      run: npm install
+    - name: Build app
+      run: npm run build
+    - name: Deploy to Firebase
+      run: firebase deploy --token $FIREBASE_TOKEN
+      env:
+        FIREBASE_TOKEN: ${{ secrets.-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCucBcTnUlOIn7z\nFFWMmCdik2Ye/qf1JiaTOeLFiYhGLc2EUOtLoJvE5bj15xygDjD7HbCPSfLdAWvj\n8083BR1wLtDY6KlVLgoe3V9Qu4maMBEJnT6ysN+3c4cQ7inLHBdaV/QVj7PrJoLO\nj+FxWa076zQv5x2zjWr7FCGpz4xzMSV6L6VesPjnCgP3boPw8m9WtHuOhm/Q5NZ2\nhtIgdeSa0G76xxbxOivoBYFycPnIgI4YO0pAu0+pyselGOoRgioT4jbNHavYeeM7\nw4z8aiSedtjBk/mch7ZO890AVktpfGaSbP+5/+Wsf2NBL2BKE2Q8DFMaw37Vd1Dv\nGtcIPQMpAgMBAAECggEADC1DMSF0S+3kyIVxfN9ktXEGapC6iwaLIBElA0bY4lRB\ncdR/vl9jbEzgetrzoLko4mi1yeTevR6DqG2USKoU3l9IQTIJmwp8FqA7rnwu7Hph\nQBdv2GO4NDtOcQg9FuJ6v1nfLi+iPr6pGDALS+E3knSWZ6clp8JuFsGWoX7dZi+J\nCqJWJ+ibcFXIuqcH86sr3vmD6TyFNj136Kdx6eYFL+42M9rEKncz6X0P7AixhCes\ny6BfUPKtCDAFWJImZAfmKwdFQHOqtF/fI1hp6IEHTs8qiy0GSe4BCqVBLLx2QAMd\n86GgE1UQUFDQO+lpElFm0M2W/kJSGZ5q5hRlNNIgoQKBgQDrSMGq3HCVTkTGU9Ap\nZpf95Mda9iUMebyg18c7gG/IfRm9BlWCGkb+WvKVIqs51e8oYvl2oycunOQ5NRa3\nz7UE4H/2iuYjhkDfcFja+kRCh+FIh893eu0FG4+R7P7xXXskpR9I2UrqOEUaGVK2\n2QDgtA6vkgJKWJrEvg60wDZbYQKBgQC9y998mp7Tjr3WNi99CMTi/T8iBaYdN72b\nxW/6REjkA51vzVEhuLDqr0zxPpgM6XiakHZlK/+qyouxabwKljm4ZtyGLfNlJj4b\nNTH0ND9sp+TmGEJRRMdB1+QjkeHViILxGJNc/3ZEL1fvAlH24ar9yZ7fJQxdP9h0\naOB4hznEyQKBgAierMG2u8UsjeZ6MZkishTSKd+SPv87AoceAKWUagP9WVEMh1tx\n3QH6kQKXt5Ax30YqghsvlQLnKpFR+ZgYWvhnxShiJFZO19eXxRmYq6GIWt+OYjJt\nZXuXa+YbuadcFmPcTM4db9ou35E6NkaOorKYxiT2g3D32Au3LtC+bf9hAoGATQ6o\n/f4I3fvmN0JopWsaBM6tAzMn7lTjNotCm2l97pVJJktF1VsW+TGTG58+PH/N53Mf\nnpPuiXkSnkU/g0zawnOAtTmSyE5uiL1gOrW7ynGgDYtr4XL7M1Bj380q03dJMnm3\n2todOjG+kdtvS7zzn3ZsekygaHuzdg/ekxDT84ECgYBU4sq6qXprdwAu/Zh1cj0c\nDvHlpmtk/EfEzT3hRbjvmnQErtdCkjccybOCwl6PpusNh6rZZibDINm/sEKufThU\nQpWoXixt/s1b5h00iDlD7ZfY1URzz7McuP5Z2LG//CqKxGQPqpFFNTdJAJ0Tai2P\nOof/wyfSrFrY7F6t0O6Bjw==\n-----END PRIVATE KEY-----\n}}
